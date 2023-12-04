@@ -49,11 +49,11 @@ new Promise<GenericResponse<AnimalFamilyResponse>>((resolve, reject) => {
 
 //-------------------------------------------------------------------------------------------------- Get families
 export const getAllAnimalFamilies = (
-): Promise<GenericResponse<AnimalFamilyData>> =>
-new Promise<GenericResponse<AnimalFamilyData>>((resolve, reject) => {
+): Promise<GenericResponse<AnimalFamilyData[]>> =>
+new Promise<GenericResponse<AnimalFamilyData[]>>((resolve, reject) => {
 	const path = "/animals/families";
 	return instance.get(path)
-		.then((respone: AxiosResponse<GenericResponse<AnimalFamilyData>>) => (
+		.then((respone: AxiosResponse<GenericResponse<AnimalFamilyData[]>>) => (
 			resolve(respone.data)
 		)).catch((error: AxiosError) => (
 			reject(error)

@@ -19,10 +19,10 @@ interface UserDataSliceProps {
 
 //-------------------------------------------------------------------------------------------------- Vars and consts
 const userDataSliceInitialState: UserDataSliceProps = {
-	userId: "",
-	username: "",
-	userType: "",
-	email: "",
+	userId: "123456",
+	username: "HectrollXD",
+	userType: "ADMIN",
+	email: "hector@localdomain.com",
 	personData: null,
 	token: "",
 	isLogged: false,
@@ -61,4 +61,5 @@ const userDataSlice = createSlice({
 //-------------------------------------------------------------------------------------------------- Exports
 export type {UserDataSliceProps};
 export const { setUserData, clearUserData } = userDataSlice.actions;
+export const getUserData = (state: any) => state.userData as UserDataSliceProps;
 export default userDataSlice.reducer;
