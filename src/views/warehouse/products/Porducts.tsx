@@ -5,7 +5,7 @@ import DefaultLayout from "../../../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
 import { Key, useCallback, useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
-import { getProducts } from "../../../methdos/methdos";
+import { deleteProduct, getProducts } from "../../../methdos/methdos";
 import _ from "lodash";
 
 
@@ -75,8 +75,30 @@ const Porducts = () => {
 
 	// Aquí se llama al api para eliminar
 	const handleDeleteItems = useCallback(() => {
-		console.log("Elementos a eliminar:", selectedItems);
-	}, [selectedItems]);
+		selectedItems.forEach(item => {
+			deleteProduct(item).then((resp) => {
+				if( resp.status ) {
+					openNotification(
+						"success",
+						`Se ha eliminado el producto con id ${item} satisfactoriamente.`
+					);
+				}
+				else{
+					openNotification(
+						"warning",
+						resp.message
+					);
+				}
+			}).catch(() => {
+				openNotification(
+					"error",
+					`No fue posible eliminar el producto con ID ${item}. Inténtelo de nuevo más tarde.`
+				);
+			});
+		});
+
+		setTimeout(() => {window.location.reload()}, 5000);
+	}, [selectedItems, openNotification]);
 
 	// Función para obtener los productos
 	const getProductsFromBackend = useCallback(() => {
