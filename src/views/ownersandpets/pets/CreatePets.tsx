@@ -3,7 +3,7 @@ import { Button, Col, DatePicker, Divider, Form, Input, Row, Select, notificatio
 import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { useCallback, useEffect, useState } from "react";
-import { OwnerRequest, PetRequest } from "../../../types/requests";
+import { PetRequest } from "../../../types/requests";
 import StyleSheet from "../../../StyleSheet";
 import SubmitButton from "../../../components/SubmitButton";
 import { SelectOption, filterOption } from "../../../common/filterOptionInSelect";
@@ -40,6 +40,8 @@ const CreatePets = () => {
 	}, [api]);
 
 	const onFinish = useCallback(async (values: PetRequest) => {
+		setDisable(true);
+
 		await createPet(values).then((resp) => {
 			if (resp.status && resp.data) {
 				openNotification(
@@ -60,6 +62,8 @@ const CreatePets = () => {
 				`
 			);
 		});
+
+		setDisable(false);
 	}, [openNotification, form]);
 
 

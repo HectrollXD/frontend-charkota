@@ -3,7 +3,7 @@ import { Button, Col, Row, Table, notification } from "antd";
 import StyleSheet from "../../../StyleSheet";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
-import { Key, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
 import { deleteProduct, getProducts } from "../../../methdos/methdos";
 import _ from "lodash";
@@ -121,7 +121,7 @@ const Porducts = () => {
 			}).catch(() => {
 				openNotification("error", "No fue posible obtener los productos. Intente de nuevo más tarde.");
 			});
-	}, [openNotification]);
+	}, [openNotification, mxnFormatter]);
 
 
 
