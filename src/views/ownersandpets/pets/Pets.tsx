@@ -5,7 +5,6 @@ import StyleSheet from "../../../StyleSheet";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
-import _ from "lodash";
 import { getAllPets } from "../../../methdos/methdos";
 
 
@@ -67,7 +66,6 @@ const Pets = () => {
 	useEffect(() => {
 		getAllPets().then((resp) => {
 			if (resp.status) {
-				console.log(resp.data.pets);
 				setPets(
 					resp.data.pets.map(pet => ({
 						key: pet.id,
@@ -84,14 +82,13 @@ const Pets = () => {
 		}).catch(() => {
 			openNotification("error", "No fue posible obtener a las mascotas. Intente de nuevo más tarde.");
 		});
-	}, []);
+	}, [openNotification]);
 
 
 
 	return (
 		<>
 			{contextHolder}
-
 			<DefaultLayout
 				title="Mascotas"
 				renderButton={
