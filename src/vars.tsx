@@ -1,6 +1,6 @@
 //-------------------------------------------------------------------------------------------------- Vars
 const vars = {
-	baseURL: "http://localhost:8085/api/v1"
+	baseURL: "http://char-kota.es.hexlink.com.mx/api/v1"
 };
 
 

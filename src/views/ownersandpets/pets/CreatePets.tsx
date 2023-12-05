@@ -86,7 +86,6 @@ const CreatePets = () => {
 
 		getAllAnimalsBreeds()
 			.then((resp) => {
-				console.log(resp);
 				if (resp.data) {
 					setBreeds(
 						resp.data.map(obj => ({
