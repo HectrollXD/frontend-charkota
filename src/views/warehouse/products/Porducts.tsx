@@ -33,6 +33,7 @@ const Porducts = () => {
 	// Data
 	const [products, setProducts] = useState<ProductDataType[]>([]);
 	const [selectedItems, setSelectedItems] = useState<string[]>([]);
+	
 	const columns: ColumnsType<ProductDataType> = [
 		{
 			title: 'Nombre',
