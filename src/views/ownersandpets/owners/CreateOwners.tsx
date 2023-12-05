@@ -72,7 +72,7 @@ const CreateOwners = () => {
 			>
 				<Row>
 					<Col span={24}>
-						<h2>Datos generales del producto</h2>
+						<h2>Datos generales del dueño</h2>
 					</Col>
 					<Divider />
 					<Col span={24}>

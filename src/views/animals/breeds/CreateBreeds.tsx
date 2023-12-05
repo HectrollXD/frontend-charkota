@@ -152,7 +152,7 @@ const CreateBreeds = () => {
 														style={{ backgroundColor: "#12b754" }}
 														onClick={() => add(undefined, 0)}
 													>
-														Agregar nuevo
+														Agregar nueva fila
 													</Button>
 												</Col>
 												<Col span={24}>
@@ -195,7 +195,7 @@ const CreateBreeds = () => {
 																<Row>
 																	<Col span={24} style={styles.bottonDelContainer}>
 																		<Button disabled={disable} danger icon={<MinusCircleOutlined />} onClick={() => remove(name)}>
-																			Eliminar registro
+																			Eliminar fila
 																		</Button>
 																	</Col>
 																</Row>

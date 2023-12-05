@@ -39,7 +39,7 @@ const CreateFamilies = () => {
 	}, [api]);
 
 	const onFinish = useCallback(async (values: CreateMultipleAnimalFamilyRequest) => {
-		if( _.isEmpty(values.families) ){
+		if (_.isEmpty(values.families)) {
 			openNotification(
 				"warning",
 				"Por lo menos de debe de agregar una fila de registros."
@@ -51,14 +51,14 @@ const CreateFamilies = () => {
 
 		await createMultipleFamiliest(values)
 			.then((resp) => {
-				if( resp.status ){
+				if (resp.status) {
 					openNotification(
 						"success",
 						"Las familias de animales se han guardado correctamente."
 					);
 					form.resetFields();
 				}
-				else{
+				else {
 					openNotification(
 						"warning",
 						resp.message
@@ -112,10 +112,10 @@ const CreateFamilies = () => {
 														disabled={disable}
 														type="primary"
 														icon={<PlusCircleOutlined />}
-														style={{backgroundColor: "#12b754"}}
-														onClick={() => add(undefined, 0)} 
+														style={{ backgroundColor: "#12b754" }}
+														onClick={() => add(undefined, 0)}
 													>
-														Agregar nuevo
+														Agregar nueva fila
 													</Button>
 												</Col>
 												<Col span={24}>
@@ -132,7 +132,7 @@ const CreateFamilies = () => {
 																		message: "El nombre de la familia es obligatorio."
 																	}]}
 																>
-																	<Input minLength={2} maxLength={32}/>
+																	<Input minLength={2} maxLength={32} />
 																</Form.Item>
 															</Col>
 															<Col span={24} style={styles.inputContainer} >
@@ -142,14 +142,14 @@ const CreateFamilies = () => {
 																	name={[name, "description"]}
 																	tooltip="Descripción de los tipos de animales que abarca. Ejemplo: canino -> (perros, lobos, coyotes)"
 																>
-																	<TextArea minLength={1} maxLength={128}/>
+																	<TextArea minLength={1} maxLength={128} />
 																</Form.Item>
 															</Col>
 															<Col span={24} style={styles.inputContainer}>
 																<Row>
 																	<Col span={24} style={styles.bottonDelContainer}>
 																		<Button disabled={disable} danger icon={<MinusCircleOutlined />} onClick={() => remove(name)}>
-																			Eliminar registro
+																			Eliminar fila
 																		</Button>
 																	</Col>
 																</Row>
@@ -164,7 +164,7 @@ const CreateFamilies = () => {
 								</Col>
 								<Col span={24} style={styles.saveButtonContainer}>
 									<Form.Item >
-										<SubmitButton form={form}/>
+										<SubmitButton form={form} />
 									</Form.Item>
 								</Col>
 							</Row>

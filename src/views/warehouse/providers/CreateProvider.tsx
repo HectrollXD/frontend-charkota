@@ -39,7 +39,7 @@ const CreateProvider = () => {
 
 
 	const onFinish = useCallback(async (values: CreateMultipleProviderRequest) => {
-		if( _.isEmpty(values.providers) ){
+		if (_.isEmpty(values.providers)) {
 			openNotification("warning", "Por lo menos de debe de agregar una fila de registros.");
 			return;
 		}
@@ -101,10 +101,10 @@ const CreateProvider = () => {
 														disabled={disable}
 														type="primary"
 														icon={<PlusCircleOutlined />}
-														style={{backgroundColor: "#12b754"}}
-														onClick={() => add(undefined, 0)} 
+														style={{ backgroundColor: "#12b754" }}
+														onClick={() => add(undefined, 0)}
 													>
-														Agregar nuevo
+														Agregar nueva fila
 													</Button>
 												</Col>
 												<Col span={24}>
@@ -168,7 +168,7 @@ const CreateProvider = () => {
 																<Row>
 																	<Col span={24} style={styles.bottonDelContainer}>
 																		<Button disabled={disable} danger icon={<MinusCircleOutlined />} onClick={() => remove(name)}>
-																			Eliminar registro
+																			Eliminar fila
 																		</Button>
 																	</Col>
 																</Row>
@@ -183,7 +183,7 @@ const CreateProvider = () => {
 								</Col>
 								<Col span={24} style={styles.saveButtonContainer}>
 									<Form.Item >
-										<SubmitButton form={form}/>
+										<SubmitButton form={form} />
 									</Form.Item>
 								</Col>
 							</Row>

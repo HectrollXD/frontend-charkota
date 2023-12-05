@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
 	contenContainer: {
 		backgroundColor: "#e5e5e5",
 		height: "100%",
+		overflow: "scroll",
 	},
 	mainContainer: {
 		padding: 50,
