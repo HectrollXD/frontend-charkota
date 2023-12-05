@@ -59,9 +59,8 @@ const CreateProducts = () => {
 				"error",
 				"Agregar productos",
 				`
-				Ocurrió un error al intentar guardar los proveedores. Asegúrese que algún proveedor
-				no esté registrado o que el RFC, número de teléfono o correo electrónico no esté
-				registrtado con otro proveedor.
+				Ocurrió un error al intentar guardar el producto. Asegúrese que no se encuentre
+				registrado en el sistema.
 				`
 			);
 		});
