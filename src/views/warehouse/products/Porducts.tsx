@@ -3,9 +3,9 @@ import { Button, Col, Row, Table, notification } from "antd";
 import StyleSheet from "../../../StyleSheet";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
-import { Key, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
-import { getProducts } from "../../../methdos/methdos";
+import { deleteProduct, getProducts } from "../../../methdos/methdos";
 import _ from "lodash";
 
 
@@ -76,8 +76,30 @@ const Porducts = () => {
 
 	// Aquí se llama al api para eliminar
 	const handleDeleteItems = useCallback(() => {
-		console.log("Elementos a eliminar:", selectedItems);
-	}, [selectedItems]);
+		selectedItems.forEach(item => {
+			deleteProduct(item).then((resp) => {
+				if( resp.status ) {
+					openNotification(
+						"success",
+						`Se ha eliminado el producto con id ${item} satisfactoriamente.`
+					);
+				}
+				else{
+					openNotification(
+						"warning",
+						resp.message
+					);
+				}
+			}).catch(() => {
+				openNotification(
+					"error",
+					`No fue posible eliminar el producto con ID ${item}. Inténtelo de nuevo más tarde.`
+				);
+			});
+		});
+
+		setTimeout(() => {window.location.reload()}, 5000);
+	}, [selectedItems, openNotification]);
 
 	// Función para obtener los productos
 	const getProductsFromBackend = useCallback(() => {
@@ -98,9 +120,9 @@ const Porducts = () => {
 					openNotification("warning", resp.message);
 				}
 			}).catch(() => {
-				openNotification("warning", "No fue posible obtener los productos. Intente de nuevo más tarde.");
+				openNotification("error", "No fue posible obtener los productos. Intente de nuevo más tarde.");
 			});
-	}, [openNotification]);
+	}, [openNotification, mxnFormatter]);
 
 
 
