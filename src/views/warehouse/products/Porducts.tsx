@@ -119,7 +119,7 @@ const Porducts = () => {
 					openNotification("warning", resp.message);
 				}
 			}).catch(() => {
-				openNotification("warning", "No fue posible obtener los productos. Intente de nuevo más tarde.");
+				openNotification("error", "No fue posible obtener los productos. Intente de nuevo más tarde.");
 			});
 	}, [openNotification]);
 
