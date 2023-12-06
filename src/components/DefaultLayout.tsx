@@ -53,7 +53,6 @@ const DefaultLayout = (props: DefaultLayoutProsp) => {
 			getItem("Dueños", "/patients/pets/owners"),
 			getItem("Mascotas", "/patients/pets"),
 		]),
-		getItem("Citas", "/dates"),
 		getItem("Ventas", "/sells"),
 	];
 

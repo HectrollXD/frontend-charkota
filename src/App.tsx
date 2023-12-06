@@ -15,6 +15,7 @@ import CreateFamilies from './views/animals/families/CreateFamilies';
 import CreateBreeds from './views/animals/breeds/CreateBreeds';
 import CreateOwners from './views/ownersandpets/owners/CreateOwners';
 import CreatePets from './views/ownersandpets/pets/CreatePets';
+import CreateSells from './views/sells/CreateSells';
 
 
 //-------------------------------------------------------------------------------------------------- App
@@ -37,6 +38,7 @@ function App() {
 				<Route path='/patients/pets/owners/create-new' element={<CreateOwners/>}/>
 				<Route path='/dates' element={<Dates/>}/>
 				<Route path='/sells' element={<Sells/>}/>
+				<Route path='/sells/create-new' element={<CreateSells/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

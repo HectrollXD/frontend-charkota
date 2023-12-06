@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------------------- Imports
-import { Button, Col, Row, notification } from "antd";
+import { Button, Col, Divider, Row, notification } from "antd";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
 import StyleSheet from "../../../StyleSheet";
@@ -93,6 +93,10 @@ const Owners = () => {
 			>
 				<Row>
 					<Col span={24}>
+						<h1>
+							Todos los dueños registrados
+						</h1>
+						<Divider />
 						<Table
 							columns={columns}
 							dataSource={pets}

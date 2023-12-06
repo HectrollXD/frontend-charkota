@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------------------- Imports
-import { Button, Col, Row, Table, notification } from "antd";
+import { Button, Col, Divider, Row, Table, notification } from "antd";
 import DefaultLayout from "../../../components/DefaultLayout";
 import StyleSheet from "../../../StyleSheet";
 import { useNavigate } from "react-router-dom";
@@ -99,6 +99,10 @@ const Pets = () => {
 			>
 				<Row>
 					<Col span={24}>
+						<h1>
+							Todas las mascotas registradas
+						</h1>
+						<Divider />
 						<Table
 							columns={columns}
 							dataSource={pets}

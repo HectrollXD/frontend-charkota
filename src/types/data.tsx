@@ -84,6 +84,15 @@ export interface ProviderData {
 	email: string;
 };
 
+//-------------------------------------------------------------------------------------------------- SaleData
+export interface SaleData {
+	id: string;
+	total: number;
+	user: UserData;
+	datetime: Date;
+	products: ProductSaleData[];
+};
+
 //-------------------------------------------------------------------------------------------------- UserData
 export interface UserData {
 	id: string;

@@ -19,9 +19,9 @@ interface UserDataSliceProps {
 
 //-------------------------------------------------------------------------------------------------- Vars and consts
 const userDataSliceInitialState: UserDataSliceProps = {
-	userId: "123456",
+	userId: "f786b8ae-eb05-4059-8135-c1e22880d5ea",
 	username: "HectrollXD",
-	userType: "ADMIN",
+	userType: "ADMINISTRATOR",
 	email: "hector@localdomain.com",
 	personData: null,
 	token: "",

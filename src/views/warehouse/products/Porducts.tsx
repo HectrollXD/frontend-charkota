@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------------------- Imports
-import { Button, Col, Row, Table, notification } from "antd";
+import { Button, Col, Divider, Row, Table, notification } from "antd";
 import StyleSheet from "../../../StyleSheet";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import _ from "lodash";
 //-------------------------------------------------------------------------------------------------- Interfaces
 export interface ProductDataType {
 	key: string;
+	barCode: string;
 	name: string;
 	price: string;
 	qtty: number;
@@ -31,10 +32,14 @@ const Porducts = () => {
 	const [api, contextHolder] = notification.useNotification();
 	const [deleteItemRender, setDeleteItemRender] = useState<boolean>(false);
 	// Data
-	const [products, setProducts] = useState<ProductDataType[]>([]);
+	const [products, setProducts] = useState<ProductDataType[]>();
 	const [selectedItems, setSelectedItems] = useState<string[]>([]);
 	
 	const columns: ColumnsType<ProductDataType> = [
+		{
+			title: 'Código de barras',
+			dataIndex: 'barCode',
+		},
 		{
 			title: 'Nombre',
 			dataIndex: 'name',
@@ -101,14 +106,18 @@ const Porducts = () => {
 		setTimeout(() => {window.location.reload()}, 5000);
 	}, [selectedItems, openNotification]);
 
-	// Función para obtener los productos
-	const getProductsFromBackend = useCallback(() => {
-		getProducts()
+
+
+	// Mandamos a traer los productos del back
+	useEffect(() => {
+		if( !products ){
+			getProducts()
 			.then((resp) => {
 				if (resp.data) {
 					setProducts(
 						resp.data.products.map(prd => ({
 							key: prd.id,
+							barCode: prd.barCode,
 							name: prd.name,
 							price: mxnFormatter.format(prd.price),
 							qtty: prd.qty,
@@ -122,14 +131,8 @@ const Porducts = () => {
 			}).catch(() => {
 				openNotification("error", "No fue posible obtener los productos. Intente de nuevo más tarde.");
 			});
+		}
 	}, [openNotification, mxnFormatter]);
-
-
-
-	// Mandamos a traer los productos del back
-	useEffect(() => {
-		getProductsFromBackend();
-	}, [getProductsFromBackend]);
 
 	// Para escuchar los items seleccionados y saber que botón vamos a renderizar.
 	useEffect(() => {
@@ -167,6 +170,10 @@ const Porducts = () => {
 			>
 				<Row>
 					<Col span={24}>
+						<h1>
+							Todos los productos registrados
+						</h1>
+						<Divider />
 						<Table
 							rowSelection={{
 								type: "checkbox",

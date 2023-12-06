@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------------------------- Imports
-import { Button, Col, Row, Table, notification } from "antd";
+import { Button, Col, Divider, Row, Table, notification } from "antd";
 import DefaultLayout from "../../../components/DefaultLayout";
 import StyleSheet from "../../../StyleSheet";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +67,7 @@ const Breeds = () => {
 		};
 
 		deleteMultipleAnimalBreeds(request).then((resp) => {
-			if( resp.status ){
+			if (resp.status) {
 				openNotification(
 					"success", "Se han eliminado los registros seleccionados satisfactoriamente."
 				);
@@ -82,14 +82,14 @@ const Breeds = () => {
 			);
 		});
 
-		setTimeout(() => {window.location.reload()}, 5000);
+		setTimeout(() => { window.location.reload() }, 5000);
 	}, [selectedItems, openNotification]);
 
 
 
 	useEffect(() => {
 		getAllAnimalsBreeds().then((resp) => {
-			if(resp.data) {
+			if (resp.data) {
 				setBreeds(
 					resp.data.map(breed => ({
 						key: breed.id,
@@ -98,7 +98,7 @@ const Breeds = () => {
 					} as BreedDataType))
 				)
 			}
-			else{
+			else {
 				openNotification("warning", resp.message);
 			}
 		}).catch(() => {
@@ -139,6 +139,10 @@ const Breeds = () => {
 			>
 				<Row>
 					<Col span={24}>
+						<h1>
+							Todas las razas registradas
+						</h1>
+						<Divider />
 						<Table
 							rowSelection={{
 								type: "checkbox",

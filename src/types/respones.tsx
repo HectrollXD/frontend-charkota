@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------------------------------- Imports
-import { AnimalBreedData, AnimalFamilyData, OwnerData, PetData, ProductData, ProductSaleData, ProviderData, UserData } from "./data";
+import { AnimalBreedData, AnimalFamilyData, OwnerData, PetData, ProductData, ProductSaleData, ProviderData, SaleData, UserData } from "./data";
 
 
 
@@ -12,6 +12,11 @@ export interface AnimalBreedResponse {
 //-------------------------------------------------------------------------------------------------- AnimalFamilyResponse
 export interface AnimalFamilyResponse {
 	families: AnimalFamilyData[];
+};
+
+//-------------------------------------------------------------------------------------------------- DetailSellResponse
+export interface DetailSellResponse {
+	sales: SaleData[];
 };
 
 //-------------------------------------------------------------------------------------------------- GenericResponse

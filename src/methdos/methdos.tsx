@@ -2,7 +2,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import vars from "../vars";
 import {
-	AnimalBreedResponse, AnimalFamilyResponse, GenericResponse, OwnerResponse, PetResponse,
+	AnimalBreedResponse, AnimalFamilyResponse, DetailSellResponse, GenericResponse, OwnerResponse, PetResponse,
 	ProductResponse, ProviderResponse, SellResponse, UserResponse
 } from "../types/respones";
 import {
@@ -116,7 +116,6 @@ new Promise<GenericResponse<never>>((resolve, reject) => {
 		));
 });
 
-//---------------------------------------------------------------------------------------------------------------------- Dates
 //---------------------------------------------------------------------------------------------------------------------- Owners
 //-------------------------------------------------------------------------------------------------- Post owners
 export const createOwner = (
@@ -298,6 +297,18 @@ new Promise<GenericResponse<SellResponse>>((resolve, reject) => {
 	const path = "/sales";
 	return instance.post(path, body)
 		.then((respone: AxiosResponse<GenericResponse<SellResponse>>) => (
+			resolve(respone.data)
+		)).catch((error: AxiosError) => (
+			reject(error)
+		));
+});
+
+//-------------------------------------------------------------------------------------------------- Get sale
+export const getAllSales = (): Promise<GenericResponse<DetailSellResponse>> =>
+new Promise<GenericResponse<DetailSellResponse>>((resolve, reject) => {
+	const path = "/sales";
+	return instance.get(path)
+		.then((respone: AxiosResponse<GenericResponse<DetailSellResponse>>) => (
 			resolve(respone.data)
 		)).catch((error: AxiosError) => (
 			reject(error)
